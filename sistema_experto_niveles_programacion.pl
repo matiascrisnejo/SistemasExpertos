@@ -75,17 +75,16 @@ nivelprincipiante(X) :-
     conoce_concepto(X, clases),
     conoce_concepto(X, variables),
     conoce_concepto(X, metodos),
-    conoce_concepto(X, ciclos),
-    \+ nivelintermedio(X),
-    \+ nivelavanzado(X).
+    conoce_concepto(X, ciclos).
 
 nivelintermedio(X) :- 
+    nivelprincipiante(X),
     conoce_concepto(X, hilos),
     conoce_concepto(X, basesdatos),
-    conoce_concepto(X, webservices),
-    \+ nivelavanzado(X).
+    conoce_concepto(X, webservices).
 
 nivelavanzado(X) :- 
+    nivelintermedio(X),
     conoce_concepto(X, metodologias),
     conoce_concepto(X, patrones).
 
@@ -104,7 +103,11 @@ faltan_para_avanzado(E, Faltantes) :-
     findall(C, (pertenece(C, L), \+ conoce(E, C)), Faltantes).
 
 
-% Recomendaciones de estudio
+% Recomendaciones de estudio - Agregar un print para que diga el nivel.
+recomendar(E, Recomendacion) :- 
+    sin_conocimientos(E),
+    principiantes(Recomendacion).
+
 recomendar(E, Recomendacion) :-
     nivelprincipiante(E),
     intermedios(Recomendacion).
@@ -113,6 +116,7 @@ recomendar(E, Recomendacion) :-
     nivelintermedio(E),
     avanzados(Recomendacion).
 
+%Agregarle que como no tiene mas materias se haga un posgrado.
 recomendar(E, []) :-
     nivelavanzado(E).
 
@@ -150,8 +154,8 @@ Ver nivel de cada estudiante o de uno especifico.
 
 ¿Qué le falta a Carlos para llegar a nivel intermedio?
 ?- faltan_para_intermedio(carlos, F).
-?- faltan_para_avanzado(paola,F).
-?- faltan_para_avanzado(miriam,F).
+faltan_para_avanzado()
+F = [hilos, basesdatos, webservices].
 
 ¿Qué le recomendás estudiar a Miriam?
 ?- recomendar(miriam, R).
@@ -160,8 +164,9 @@ Listar todos los estudiantes clasificados por los distintos niveles:
 ?- listar_por_nivel.
 
 Listar los estudiantes clasificados por un nivel especifico:
-?- listar(nivelprincipiante).
+?- listar(nivelprincipiante)
 
 Ver si hay algún estudiante que no tiene conocimientos:
 ?- sin_conocimientos(X).
+
 */
