@@ -150,8 +150,8 @@ Ver nivel de cada estudiante o de uno especifico.
 
 ¿Qué le falta a Carlos para llegar a nivel intermedio?
 ?- faltan_para_intermedio(carlos, F).
-faltan_para_avanzado()
-F = [hilos, basesdatos, webservices].
+?- faltan_para_avanzado(paola,F).
+?- faltan_para_avanzado(miriam,F).
 
 ¿Qué le recomendás estudiar a Miriam?
 ?- recomendar(miriam, R).
@@ -160,9 +160,8 @@ Listar todos los estudiantes clasificados por los distintos niveles:
 ?- listar_por_nivel.
 
 Listar los estudiantes clasificados por un nivel especifico:
-?- listar(nivelprincipiante)
+?- listar(nivelprincipiante).
 
 Ver si hay algún estudiante que no tiene conocimientos:
 ?- sin_conocimientos(X).
-
 */
