@@ -1,3 +1,31 @@
+# Trabajo Práctico 2
+
+### Autores:
+- **Javier Robledo**  
+- **Matias Crisnejo**
+- **Luciano Robles**
+- **Julian Diani**
+- **Olson Miriam**
+- **Valentino Chiapani**
+- **Agustin Fiordasi**
+- **Octavio Cesio**
+- **Juan Manuel Llanez Alzogaray**
+
+### Institución:
+- **Universidad Nacional de Hurlingham**
+
+### Materia:
+- **Lógica y Programación**
+
+### Docente:
+- **Pablo Miguel Angel Pandolfo**
+
+### Fecha:
+- **23 de Junio de 2025**
+
+
+
+
 # SistemasExpertos
 Repositorio para documentar un sistema experto, desarrollado en prolog.
 4 \- Ejemplos de tipos de aplicaciones:
