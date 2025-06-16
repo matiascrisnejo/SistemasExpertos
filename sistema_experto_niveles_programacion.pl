@@ -1,6 +1,6 @@
 % HECHOS
 % Lista de estudiantes
-estudiantes([carlos, david, esteban, julian, matias, miriam, paola]).
+estudiantes([carlos, david, esteban, julian, matias, luciano, paola]).
 % Conceptos por nivel
 principiantes([clases, variables, metodos, ciclos]).
 intermedios([hilos, basesdatos, webservices]).
@@ -28,13 +28,13 @@ conoce(david, webservices).
 conoce(david, patrones).
 conoce(david, metodologias).
 
-conoce(miriam, clases).
-conoce(miriam, variables).
-conoce(miriam, metodos).
-conoce(miriam, ciclos).
-conoce(miriam, hilos).
-conoce(miriam, basesdatos).
-conoce(miriam, webservices).
+conoce(luciano, clases).
+conoce(luciano, variables).
+conoce(luciano, metodos).
+conoce(luciano, ciclos).
+conoce(luciano, hilos).
+conoce(luciano, basesdatos).
+conoce(luciano, webservices).
 
 conoce(esteban, hilos).
 conoce(esteban, basesdatos).
@@ -157,8 +157,8 @@ Ver nivel de cada estudiante o de uno especifico.
 faltan_para_avanzado()
 F = [hilos, basesdatos, webservices].
 
-¿Qué le recomendás estudiar a Miriam?
-?- recomendar(miriam, R).
+¿Qué le recomendás estudiar a Luciano?
+?- recomendar(luciano, R).
 
 Listar todos los estudiantes clasificados por los distintos niveles:
 ?- listar_por_nivel.
