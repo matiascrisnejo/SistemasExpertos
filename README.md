@@ -44,8 +44,8 @@ Los sistemas expertos se pueden clasificar según diferentes criterios. La clasi
 * #### **Sistemas Basados en Reglas (Rule-Based Systems):**   Usan reglas de inferencia para brindar el conocimiento experto. Los sistemas basados en reglas funcionan aplicando una serie de instrucciones del tipo "si ocurre tal cosa, entonces hacer tal otra". Estas reglas permiten tomar decisiones en función de una situación determinada. El sistema analiza el estado actual, elige las reglas que se pueden aplicar, ejecuta alguna de ellas, y luego vuelve a evaluar la situación resultante para seguir actuando en consecuencia.
 
   Además, este tipo de sistemas puede razonar de dos maneras principales:  
-1. **Razonamiento hacia adelante (o progresivo):** el sistema parte de datos o hechos conocidos y aplica reglas de forma secuencial para llegar a una conclusión. Es decir, avanza desde lo que ya sabe hasta descubrir algo nuevo.  
-2. **Razonamiento hacia atrás (o regresivo):** en este caso, el sistema parte de una posible solución o hipótesis, y trata de verificar si hay hechos o reglas que la justifican. Es decir, retrocede desde la conclusión que quiere alcanzar para ver si puede demostrarla.
+  1. **Razonamiento hacia adelante (o progresivo):** el sistema parte de datos o hechos conocidos y aplica reglas de forma secuencial para llegar a una conclusión. Es decir, avanza desde lo que ya sabe hasta descubrir algo nuevo.  
+  2. **Razonamiento hacia atrás (o regresivo):** en este caso, el sistema parte de una posible solución o hipótesis, y trata de verificar si hay hechos o reglas que la justifican. Es decir, retrocede desde la conclusión que quiere alcanzar para ver si puede demostrarla.
 
 * **Razonamiento basado en casos:** almacenan información sobre casos previos y la usan para ofrecer soluciones a problemas similares previamente resueltos. Este tipo de enfoque se basa en la idea de que muchos problemas tienen patrones repetitivos, y que recordar cómo se resolvió un caso anterior puede ayudar a resolver uno nuevo de forma más rápida y eficiente.  
   El caso actual se suele guardar su solución ajustada por un próximo caso siguiente semejante.   
