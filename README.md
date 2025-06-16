@@ -1,7 +1,9 @@
 # Trabajo Práctico 2
 
 
-![Logo del proyecto](.\assert\logo.png)
+
+![Logo del proyecto](./assert/logo.png)
+!
 
 
 ### Autores:
