@@ -53,7 +53,7 @@ Los sistemas expertos se pueden clasificar según diferentes criterios. La clasi
 * **Basados en modelos:** Utiliza modelos para simular el comportamiento de sistemas físicos, tanto existentes como futuros, con el objetivo de comprender su funcionamiento y optimizar su diseño**.**   
 * **Modelo bayesiano:** Se basa en el uso de un modelo estadístico bayesiano. El Teorema de Bayes, en grandes rasgos es una fórmula matemática que permite calcular la probabilidad de una hipótesis basada en la evidencia previa y la evidencia observada.  
   *Fórmula de bayes:*   
-  ![Logo del proyecto](./assert/nayes1.png) 
+  ![Logo del proyecto](./assert/bayes1.png) 
 
   En el contexto del aprendizaje automático (machine learning), un clasificador bayesiano es un modelo que utiliza la probabilidad para predecir a qué categoría pertenece un dato nuevo, basándose en la fórmula de Bayes.  
   Estos clasificadores aprenden a partir de datos ya etiquetados (conocidos como datos de entrenamiento), y luego aplican ese conocimiento para clasificar nuevos casos.  
