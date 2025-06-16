@@ -1,9 +1,11 @@
 % HECHOS
-% Lista de estudiantes
+% Listas
+% Estudiantes
 estudiantes([carlos, david, esteban, julian, matias, miriam, paola]).
+
 % Conceptos por nivel
 principiantes([clases, variables, metodos, ciclos]).
-intermedios([hilos, basesdatos, webservices]).
+intermedios([hilos, bases_datos, web_services]).
 avanzados([patrones, metodologias]).
 
 % Conceptos de programación
@@ -18,6 +20,7 @@ conceptosprogramacion(metodologias).
 conceptosprogramacion(webservices).
 
 % Conceptos adquiridos por los estudiantes
+%david
 conoce(david, clases).
 conoce(david, variables).
 conoce(david, metodos).
@@ -28,6 +31,7 @@ conoce(david, webservices).
 conoce(david, patrones).
 conoce(david, metodologias).
 
+%miriam
 conoce(miriam, clases).
 conoce(miriam, variables).
 conoce(miriam, metodos).
@@ -36,6 +40,7 @@ conoce(miriam, hilos).
 conoce(miriam, basesdatos).
 conoce(miriam, webservices).
 
+%esteban
 conoce(esteban, hilos).
 conoce(esteban, basesdatos).
 conoce(esteban, webservices).
@@ -44,16 +49,18 @@ conoce(esteban, variables).
 conoce(esteban, metodos). 
 conoce(esteban, ciclos).
 
+%carlos
 conoce(carlos, clases). 
 conoce(carlos, variables). 
 conoce(carlos, metodos). 
-conoce(carlos, ciclos).
+conoce(carlos, webservices).
 
+%julian
 conoce(julian, clases). 
 conoce(julian, variables). 
 conoce(julian, metodos). 
-conoce(julian, ciclos).
 
+%matias
 conoce(matias, clases). 
 conoce(matias, variables). 
 conoce(matias, metodos). 
@@ -75,75 +82,128 @@ nivelprincipiante(X) :-
     conoce_concepto(X, clases),
     conoce_concepto(X, variables),
     conoce_concepto(X, metodos),
-    conoce_concepto(X, ciclos).
+    conoce_concepto(X, ciclos),
+    \+ nivelintermedio(X),
+    \+ nivelavanzado(X).
 
 nivelintermedio(X) :- 
-    nivelprincipiante(X),
     conoce_concepto(X, hilos),
     conoce_concepto(X, basesdatos),
-    conoce_concepto(X, webservices).
+    conoce_concepto(X, webservices),
+    \+ nivelavanzado(X).
 
 nivelavanzado(X) :- 
-    nivelintermedio(X),
     conoce_concepto(X, metodologias),
     conoce_concepto(X, patrones).
 
-% Qué le falta para alcanzar el siguiente nivel
-% findall(Elemento, Condición, ListaResultado).
-faltan_para_principiante(E, Faltantes) :-
+mostrar(Mensaje) :-
+    writeln(Mensaje), !.
+
+% Consultas sistema experto:
+% Qué le falta para completar el nivel
+faltan_para_principiante(E) :-
     principiantes(L),
-    findall(C, (pertenece(C, L), \+ conoce(E, C)), Faltantes).
+    mostrar('-- Le faltan estos conceptos para el nivel principiante:  --'),
+    findall(C, ( pertenece(C, L), \+ conoce(E, C) ), Faltantes),
+    listar_lista(Faltantes).
 
-faltan_para_intermedio(E, Faltantes) :-
+faltan_para_intermedio(E) :-
     intermedios(L),
-    findall(C, (pertenece(C, L), \+ conoce(E, C)), Faltantes).
+    findall(C, (pertenece(C, L), \+ conoce(E, C)), Faltantes),
+    mostrar('-- Le faltan estos conceptos para el nivel intermedio:  --'),
+    listar_lista(Faltantes).
 
-faltan_para_avanzado(E, Faltantes) :-
+faltan_para_avanzado(E) :-
     avanzados(L),
-    findall(C, (pertenece(C, L), \+ conoce(E, C)), Faltantes).
+    findall(C, (pertenece(C, L), \+ conoce(E, C)), Faltantes),
+    mostrar('-- Le faltan estos conceptos para el nivel avanzado:  --'),
+    listar_lista(Faltantes).
 
+% que le falta para graduarse:
+faltan_para_graduarse(E) :-
+    faltan_para_principiante(E),
+    faltan_para_intermedio(E),
+    faltan_para_avanzado(E).
 
-% Recomendaciones de estudio - Agregar un print para que diga el nivel.
-recomendar(E, Recomendacion) :- 
-    sin_conocimientos(E),
-    principiantes(Recomendacion).
+% Recomendaciones de estudio - Agregar un print para que diga el nivel. REFACTORIZAR!!!
+recomendar(E) :- 
+    sin_nivel(E),
+    faltan_para_principiante(E),!.
 
-recomendar(E, Recomendacion) :-
+recomendar(E) :-
     nivelprincipiante(E),
-    intermedios(Recomendacion).
+    faltan_para_intermedio(E),!.
 
-recomendar(E, Recomendacion) :-
+recomendar(E) :-
     nivelintermedio(E),
-    avanzados(Recomendacion).
+    faltan_para_avanzado(E),!.
 
 %Agregarle que como no tiene mas materias se haga un posgrado.
-recomendar(E, []) :-
-    nivelavanzado(E).
+recomendar(E) :-
+    nivelavanzado(E),
+    mostrar('Se recomienda un master'),!.
 
-% Listar estudiantes por nivel
+% Listar estudiantes por nivel completo
 listar_por_nivel :-
-    writeln('--- Principiantes ---'), listar(nivelprincipiante),
-    writeln('--- Intermedios ---'), listar(nivelintermedio),
-    writeln('--- Avanzados ---'), listar(nivelavanzado).
-/*
-call: Ejecuta un predicado que se pasa como argumento como si estuvieras escribiéndolo 
-directamente. EJ: call(Predicado, Argumento).
+    mostrar('--- Sin nivel completo ---'),listar_sin_nivel,
+    mostrar('--- Principiantes ---'), listar(nivelprincipiante),
+    mostrar('--- Intermedios ---'), listar(nivelintermedio),
+    mostrar('--- Avanzados ---'), listar(nivelavanzado).
 
-forall: Recorrer una lista (o generar soluciones) y asegurarse de que todas cumplan una 
-cierta condición o de ejecutar una acción para cada una de ellas. 
-EJ: forall(CondiciónGeneradora, Acción).
-*/
 % Listar estudiantes de un nivel especifico.
 listar(Nivel) :-
     estudiantes(Es),
-    forall(pertenece(E, Es), (call(Nivel, E) -> writeln(E); true)).
+    forall( pertenece(E, Es), (call(Nivel, E) -> writeln(E); true)).
+
+% Listar estudiantes sin nivel principiante incompleto.
+listar_sin_nivel :-
+    estudiantes(Es),
+     forall( pertenece(E, Es),
+            (sin_nivel(E) -> writeln(E); true)).
 
 % Estudiantes sin conocimientos registrados
-sin_conocimientos(E) :-
-    estudiante(E),
-    \+ conoce(E, _).
+sin_nivel(E) :-
+    estudiantes(Es),
+    pertenece(E, Es), 
+          (\+ call(nivelprincipiante, E), 
+          \+ call(nivelintermedio, E), 
+          \+ call(nivelavanzado, E)),!.
+
+% listar conceptos por nivel
+listar_conceptos_por_nivel :-
+    mostrar('--- Conceptos de Nivel Principiante ---'), listar_conceptos(principiantes),
+    mostrar('--- Conceptos de Nivel Intermedio ---'), listar_conceptos(intermedios),
+    mostrar('--- Conceptos de Nivel Avanzado ---'), listar_conceptos(avanzados).
+
+listar_conceptos(Nivel) :-
+    call(Nivel, Conceptos),
+    listar_lista(Conceptos).
+
+listar_lista([]).
+listar_lista([H|T]) :- mostrar(H), listar_lista(T).
+
+
 /*
-✅ EJEMPLOS DE USO
+Definiciones:
+call: 
+    Ejecuta un predicado que se pasa como argumento como si estuvieras escribiéndolo 
+    directamente. EJ: call(Predicado, Argumento).
+
+forall: 
+    Recorrer una lista (o generar soluciones) y asegurarse de que todas cumplan una 
+    cierta condición o de ejecutar una acción para cada una de ellas. 
+    EJ: forall(CondiciónGeneradora, Acción).
+
+findall: 
+    findall(Forma, Condición, ListaResultado).
+    - Forma: Es la forma en que se estructuran los resultados.
+    - Condicion: Es la consulta que se ejecuta para encontrar soluciones.
+    - ListaResultado: Es la lista que contendrá todas las instancias de 
+      la plantilla que cumplen la meta.
+*/
+
+/** <examples>
+EJEMPLOS DE USO
 Ver nivel de cada estudiante o de uno especifico.
 ?- nivelprincipiante(E).
 ?- nivelintermedio(E).
@@ -154,8 +214,8 @@ Ver nivel de cada estudiante o de uno especifico.
 
 ¿Qué le falta a Carlos para llegar a nivel intermedio?
 ?- faltan_para_intermedio(carlos, F).
-faltan_para_avanzado()
-F = [hilos, basesdatos, webservices].
+?- faltan_para_avanzado()
+%F = [hilos, basesdatos, webservices].
 
 ¿Qué le recomendás estudiar a Miriam?
 ?- recomendar(miriam, R).
@@ -164,7 +224,35 @@ Listar todos los estudiantes clasificados por los distintos niveles:
 ?- listar_por_nivel.
 
 Listar los estudiantes clasificados por un nivel especifico:
-?- listar(nivelprincipiante)
+?- listar(nivelprincipiante).
+
+Ver si hay algún estudiante que no tiene conocimientos:
+?- sin_conocimientos(X).
+
+Conceptos que le faltan a carlos:
+?- faltan_para_graduarse(carlos).
+?- faltan_para_principiante(carlos).
+?- faltan_para_intermedio(carlos).
+?- faltan_para_avanzado(carlos).
+
+Estudiante sin nivel:
+?- listar_sin_nivel.
+
+Listar todos los estudiantes por niveles:
+?- listar_por_nivel.
+
+Listar todos los conceptos ordenados por nivel:
+?- listar_conceptos_por_nivel.
+
+conceptos recomendados:
+?- recomendar(david).
+*/
+
+
+
+
+
+
 
 Ver si hay algún estudiante que no tiene conocimientos:
 ?- sin_conocimientos(X).
