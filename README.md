@@ -1,21 +1,20 @@
-# Trabajo Práctico 2
-
+# Trabajo Práctico 2                                            
 
 
 ![Logo del proyecto](./assert/logo.png)
-![Logo del proyecto](./assert/unahur33.png)
+
 
 
 ### Autores:
-- **Javier Robledo**  
-- **Matías Crisnejo**
-- **Luciano Robles**
-- **Julian Diani**
-- **Miriam Olson**
-- **Valentino Chiapani**
-- **Agustin Fiordalisi**
-- **Octavio Cesio**
-- **Juan Manuel Llanez Alzogaray**
+- **Cesio Octavio**
+- **Chiapani Valentino**
+- **Crisnejo Matias**
+- **Diani Julian**
+- **Fiordalisi Agustin**
+- **Llanez Alzogaray Juan Manuel**
+- **Olson Miriam**
+- **Robledo Javier** 
+- **Robles Luciano** 
 
 ### Institución:
 - **Universidad Nacional de Hurlingham**
