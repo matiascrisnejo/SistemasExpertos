@@ -3,7 +3,7 @@
 
 
 ![Logo del proyecto](./assert/logo.png)
-!
+![Logo del proyecto](./assert/logoUnahur.png)
 
 
 ### Autores:
