@@ -7,7 +7,7 @@
 
 ### Autores:
 - **Cecio Octavio**
-- **Chiapani Valentino**
+- **Chiappanni Valentino**
 - **Crisnejo Matias**
 - **Diani Julian**
 - **Fiordalisi Agustin**
