@@ -1,7 +1,7 @@
 % HECHOS
 % Listas
 % Estudiantes
-estudiantes([carlos, david, esteban, julian, matias, miriam, paola]).
+estudiantes([carlos, david, esteban, julian, matias, javier, paola]).
 
 % Conceptos por nivel
 principiantes([clases, variables, metodos, ciclos]).
@@ -31,14 +31,14 @@ conoce(david, web_services).
 conoce(david, patrones).
 conoce(david, metodologias).
 
-%miriam
-conoce(miriam, clases).
-conoce(miriam, variables).
-conoce(miriam, metodos).
-conoce(miriam, ciclos).
-conoce(miriam, hilos).
-conoce(miriam, bases_datos).
-conoce(miriam, web_services).
+%javier
+conoce(javier, clases).
+conoce(javier, variables).
+conoce(javier, metodos).
+conoce(javier, ciclos).
+conoce(javier, hilos).
+conoce(javier, bases_datos).
+conoce(javier, web_services).
 
 %esteban
 conoce(esteban, hilos).
@@ -100,22 +100,30 @@ mostrar(Mensaje) :-
     writeln(Mensaje), !.
 
 % Consultas sistema experto:
+% Construir lista de faltantes recursivamente
+conceptos_faltantes(_, [], []). 
+conceptos_faltantes(E, [C|R], [C|Faltantes]) :- 
+    \+ conoce(E, C),
+    conceptos_faltantes(E, R, Faltantes),!.
+conceptos_faltantes(E, [_|R], Faltantes) :- 
+    conceptos_faltantes(E, R, Faltantes),!.
+
 % Qué le falta para completar el nivel
 faltan_de_principiante(E) :-
     principiantes(L),
+    conceptos_faltantes(E, L, Faltantes),
     mostrar('-- Le faltan estos conceptos para el nivel principiante:  --'),
-    findall(C, ( pertenece(C, L), \+ conoce(E, C) ), Faltantes),
     listar_lista(Faltantes).
 
 faltan_de_intermedio(E) :-
     intermedios(L),
-    findall(C, (pertenece(C, L), \+ conoce(E, C)), Faltantes),
+    conceptos_faltantes(E, L, Faltantes),
     mostrar('-- Le faltan estos conceptos para el nivel intermedio:  --'),
     listar_lista(Faltantes).
 
 faltan_de_avanzado(E) :-
     avanzados(L),
-    findall(C, (pertenece(C, L), \+ conoce(E, C)), Faltantes),
+    conceptos_faltantes(E, L, Faltantes),
     mostrar('-- Le faltan estos conceptos para el nivel avanzado:  --'),
     listar_lista(Faltantes).
 
@@ -128,19 +136,32 @@ faltan_para_graduarse(E) :-
 % Recomendaciones de estudio:
 recomendar(E) :- 
     sin_nivel(E),
-    faltan_de_principiante(E),!.
+    mostrar('--- Recomendación ---'),
+    mostrar('Estás comenzando. Te recomiendo iniciar con estos conceptos:'),
+    principiantes(L),
+    conceptos_faltantes(E, L, F),
+    listar_lista(F), !.
 
-recomendar(E) :-
+recomendar(E) :- 
     nivelprincipiante(E),
-    faltan_de_intermedio(E),!.
+    mostrar('--- Recomendación ---'),
+    mostrar('tenés base de principiante. continua con el nivel intermedio:'),
+    intermedios(L),
+    conceptos_faltantes(E, L, F),
+    listar_lista(F), !.
 
-recomendar(E) :-
+recomendar(E) :- 
     nivelintermedio(E),
-    faltan_de_avanzado(E),!.
+    mostrar('--- Recomendación ---'),
+    mostrar('Buen trabajo. Estás listo para abordar el nivel avanzado:'),
+    avanzados(L),
+    conceptos_faltantes(E, L, F),
+    listar_lista(F), !.
 
-recomendar(E) :-
+recomendar(E) :- 
     nivelavanzado(E),
-    mostrar('Se recomienda un master'),!.
+    mostrar('--- Recomendación ---'),
+    mostrar('Ya dominás todos los niveles. Se recomienda realizar un máster o mentorías avanzadas.'), !.
 
 % Listar estudiantes por nivel completo
 listar_por_nivel :-
@@ -209,7 +230,7 @@ Ver nivel de cada estudiante o de uno especifico.
 ?- nivelavanzado(E).
 ?- nivelprincipiante(matias).
 ?- nivelavanzado(david).
-?- nivelintermedio(miriam).
+?- nivelintermedio (javier).
 
 ¿Qué le falta a paola del nivel principiante?
 ?- faltan_de_principiante(paola).
@@ -217,8 +238,8 @@ Ver nivel de cada estudiante o de uno especifico.
 ¿Qué le falta a Carlos del nivel intermedio?
 ?- faltan_de_intermedio(carlos).
 
-¿Qué le falta a miriam del nivel avanzado?
-?- faltan_de_avanzado(miriam).
+¿Qué le falta a javier del nivel avanzado?
+?- faltan_de_avanzado (javier).
 %F = [patrones, metodologias].
 
 Listar todos los estudiantes clasificados por los distintos niveles completos:
@@ -242,7 +263,7 @@ Listar todos los conceptos ordenados por nivel:
 conceptos recomendados para un estudiante:
 ?- recomendar(david).
 ?- recomendar(carlos).
-?- recomendar(miriam).
+?- recomendar (javier).
 */
 
 
