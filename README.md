@@ -6,7 +6,7 @@
 
 
 ### Autores:
-- **Cesio Octavio**
+- **Cecio Octavio**
 - **Chiapani Valentino**
 - **Crisnejo Matias**
 - **Diani Julian**
@@ -136,7 +136,7 @@ Los sistemas expertos pueden funcionar de diferentes formas según cuánto y có
 
 **El mecanismo utilizado por prolog para responder a las consultas es la unificación, el sistema compara términos e intenta hacerlos coincidir mediante sustitución de variables.**
 
- *“padre(juan, Y). El sistema reemplaza la variable Y unificando con el hecho padre(juan, pedro), dando como resultado juan = Y.”*
+ *“padre(juan, Y). El sistema reemplaza la variable Y unificando con el hecho padre(juan, pedro), dando como resultado Y = Pedro.”*
 
 **Cuando una consulta puede satisfacerse de más de una forma, el sistema utiliza la técnica de backtracking, que le permite volver al punto de decisión anterior y probar otra opción, para de esa manera encontrar todas las soluciones posibles, o confirmar que ninguna lo satisface.**
 
