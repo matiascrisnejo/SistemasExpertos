@@ -1,8 +1,8 @@
-%El siguiente sistema experto permitirá evaluar el nivel de conocimientos de programación de distintos estudiantes y recomendarles qué conceptos estudiar a continuación.
+%El siguiente sistema experto permitirá evaluar el nivel de 
+%conocimientos de programación de distintos estudiantes 
+%y recomendarles qué conceptos estudiar a continuación en base a los conocimientos ya adquiridos.
 % HECHOS
-% Listas
-% Estudiantes
-estudiantes([carlos, david, esteban, julian, matias, javier, paola]).
+estudiantes([carlos, david, esteban, julian, matias, javier, paola]). %lista de estudiantes
 
 % Conceptos clave por nivel
 principiantes([clases, variables, metodos, ciclos]).
@@ -20,7 +20,7 @@ conceptosprogramacion(patrones).
 conceptosprogramacion(metodologias).
 conceptosprogramacion(web_services).
 
-% Conceptos adquiridos por los estudiantes(Hechos)
+% Conceptos adquiridos por los estudiantes
 %david
 conoce(david, clases).
 conoce(david, variables).
@@ -54,7 +54,6 @@ conoce(esteban, ciclos).
 conoce(carlos, clases). 
 conoce(carlos, variables). 
 conoce(carlos, metodos). 
-conoce(carlos, web_services).
 
 %julian
 conoce(julian, clases). 
@@ -68,7 +67,6 @@ conoce(matias, metodos).
 conoce(matias, ciclos).
 
 % Reglas
-% Funcion auxiliar se podria cambiar por la nativa menber/2
 pertenece(X, [X|_]).
 pertenece(X, [_|T]) :- pertenece(X, T).
 
@@ -199,7 +197,7 @@ listar_conceptos_por_nivel :-
 listar_conceptos(Nivel) :-
     call(Nivel, Conceptos),
     listar_lista(Conceptos).
-
+%Metodo auxiliar para mostrar elementos de una lista
 listar_lista([]).
 listar_lista([H|T]) :- mostrar(H), listar_lista(T).
 
@@ -207,9 +205,11 @@ listar_lista([H|T]) :- mostrar(H), listar_lista(T).
 /*
 Definiciones:
 call: 
-    Ejecuta un predicado que se pasa como argumento como si estuvieras escribiéndolo 
-    directamente. EJ: call(Predicado, Argumento).
-
+    Es una función que te permite ejecutar un predicado de forma dinámica,
+	es como decir: usá esta variable como si fuera el nombre de un predicado y ejecutalo
+	¿Por qué usar call?
+	Porque te permite escribir una sola regla general (listar_conceptos/1)
+	que sirve para cualquier nivel: principiantes, intermedios o avanzados.
 forall: 
     Recorrer una lista (o generar soluciones) y asegurarse de que todas cumplan una 
     cierta condición o de ejecutar una acción para cada una de ellas. 
@@ -226,12 +226,10 @@ findall:
 /** <examples>
 EJEMPLOS DE USO
 Ver nivel de cada estudiante o de uno especifico.
-?- nivelprincipiante(E).
-?- nivelintermedio(E).
-?- nivelavanzado(E).
 ?- nivelprincipiante(matias).
+?- nivelavanzado(matias).
 ?- nivelavanzado(david).
-?- nivelintermedio (javier).
+?- nivelintermedio(javier).
 
 ¿Qué le falta a paola del nivel principiante?
 ?- faltan_de_principiante(paola).
@@ -240,7 +238,7 @@ Ver nivel de cada estudiante o de uno especifico.
 ?- faltan_de_intermedio(carlos).
 
 ¿Qué le falta a javier del nivel avanzado?
-?- faltan_de_avanzado (javier).
+?- faltan_de_avanzado(javier).
 %F = [patrones, metodologias].
 
 Listar todos los estudiantes clasificados por los distintos niveles completos:
@@ -248,6 +246,9 @@ Listar todos los estudiantes clasificados por los distintos niveles completos:
 
 Listar los estudiantes clasificados por un nivel especifico:
 ?- listar(nivelprincipiante).
+
+Listar todos los conceptos ordenados por nivel:
+?- listar_conceptos_por_nivel.
 
 Ver si hay algún estudiante sin nivel principiante:
 ?- listar_sin_nivel.
@@ -258,16 +259,9 @@ Conceptos que les faltan:
 ?- faltan_de_intermedio(paola).
 ?- faltan_de_avanzado(julian).
 
-Listar todos los conceptos ordenados por nivel:
-?- listar_conceptos_por_nivel.
 
 conceptos recomendados para un estudiante:
-?- recomendar(david).
 ?- recomendar(carlos).
-?- recomendar (javier).
+?- recomendar(javier).
+?- recomendar(david).
 */
-
-
-
-
-
