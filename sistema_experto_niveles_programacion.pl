@@ -1,9 +1,10 @@
+%El siguiente sistema experto permitirá evaluar el nivel de conocimientos de programación de distintos estudiantes y recomendarles qué conceptos estudiar a continuación.
 % HECHOS
 % Listas
 % Estudiantes
 estudiantes([carlos, david, esteban, julian, matias, javier, paola]).
 
-% Conceptos por nivel
+% Conceptos clave por nivel
 principiantes([clases, variables, metodos, ciclos]).
 intermedios([hilos, bases_datos, web_services]).
 avanzados([patrones, metodologias]).
@@ -19,7 +20,7 @@ conceptosprogramacion(patrones).
 conceptosprogramacion(metodologias).
 conceptosprogramacion(web_services).
 
-% Conceptos adquiridos por los estudiantes
+% Conceptos adquiridos por los estudiantes(Hechos)
 %david
 conoce(david, clases).
 conoce(david, variables).
@@ -108,7 +109,7 @@ conceptos_faltantes(E, [C|R], [C|Faltantes]) :-
 conceptos_faltantes(E, [_|R], Faltantes) :- 
     conceptos_faltantes(E, R, Faltantes),!.
 
-% Qué le falta para completar el nivel
+% Qué conceptos le faltan para completar el nivel
 faltan_de_principiante(E) :-
     principiantes(L),
     conceptos_faltantes(E, L, Faltantes),
@@ -127,7 +128,7 @@ faltan_de_avanzado(E) :-
     mostrar('-- Le faltan estos conceptos para el nivel avanzado:  --'),
     listar_lista(Faltantes).
 
-% que le falta para graduarse:
+% que conceptos le faltan para graduarse:
 faltan_para_graduarse(E) :-
     faltan_de_principiante(E),
     faltan_de_intermedio(E),
