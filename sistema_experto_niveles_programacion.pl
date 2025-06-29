@@ -67,8 +67,6 @@ conoce(matias, metodos).
 conoce(matias, ciclos).
 
 % Reglas
-pertenece(X, [X|_]).
-pertenece(X, [_|T]) :- pertenece(X, T).
 
 % Estudiante válido
 estudiante(X) :- estudiantes(L), pertenece(X, L).
@@ -97,6 +95,9 @@ nivelavanzado(X) :-
 
 mostrar(Mensaje) :-
     writeln(Mensaje), !.
+
+pertenece(X, [X|_]).
+pertenece(X, [_|T]) :- pertenece(X, T).
 
 % Consultas sistema experto:
 % Construir lista de faltantes recursivamente
@@ -201,7 +202,6 @@ listar_conceptos(Nivel) :-
 listar_lista([]).
 listar_lista([H|T]) :- mostrar(H), listar_lista(T).
 
-
 /*
 Definiciones:
 call: 
@@ -214,13 +214,6 @@ forall:
     Recorrer una lista (o generar soluciones) y asegurarse de que todas cumplan una 
     cierta condición o de ejecutar una acción para cada una de ellas. 
     EJ: forall(CondiciónGeneradora, Acción).
-
-findall: 
-    findall(Forma, Condición, ListaResultado).
-    - Forma: Es la forma en que se estructuran los resultados.
-    - Condicion: Es la consulta que se ejecuta para encontrar soluciones.
-    - ListaResultado: Es la lista que contendrá todas las instancias de 
-      la plantilla que cumplen la meta.
 */
 
 /** <examples>
