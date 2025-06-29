@@ -1,7 +1,8 @@
 # Trabajo Práctico 2                                            
 
-
-![Logo del proyecto](./assert/logo.png)
+<p align="center">
+  <img src="./assert/logo.png" alt="Descripción de la imagen">
+</p>
 
 
 
