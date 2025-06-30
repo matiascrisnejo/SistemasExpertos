@@ -8,17 +8,15 @@
 
 <div align="center">
   <h3>Autores:</h3>
-  <ul style="list-style: none; padding: 0;">
-    <li><strong>Cecio Octavio</strong></li>
-    <li><strong>Chiappanni Valentino</strong></li>
-    <li><strong>Crisnejo Matias</strong></li>
-    <li><strong>Diani Julian</strong></li>
-    <li><strong>Fiordalisi Agustin</strong></li>
-    <li><strong>Llanez Alzogaray Juan Manuel</strong></li>
-    <li><strong>Olson Miriam</strong></li>
-    <li><strong>Robledo Javier</strong></li>
-    <li><strong>Robles Luciano</strong></li>
-  </ul>
+  <p><strong>Cecio Octavio</strong></p>
+  <p><strong>Chiappanni Valentino</strong></p>
+  <p><strong>Crisnejo Matias</strong></p>
+  <p><strong>Diani Julian</strong></p>
+  <p><strong>Fiordalisi Agustin</strong></p>
+  <p><strong>Llanez Alzogaray Juan Manuel</strong></p>
+  <p><strong>Olson Miriam</strong></p>
+  <p><strong>Robledo Javier</strong></p>
+  <p><strong>Robles Luciano</strong></p>
 </div>
 <div align="center">
 ### Institución:
