@@ -1,6 +1,4 @@
-<div align="center">
-# Trabajo Práctico 2
-</div>
+<h1 align="center">Trabajo Práctico 2</h1>
 <p align="center">
   <img src="./assert/logo.png" alt="Descripción de la imagen">
 </p>
