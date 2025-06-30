@@ -21,20 +21,17 @@
   <p><strong>Universidad Nacional de Hurlingham</strong></p>
 </div>
 <div align="center">
-### Materia:
-- **Lógica y Programación**
-</div>
-<div align="center">
-### Docente:
-- **Pablo Pandolfo**
-</div>
-<div align="center">
-### Tema:
-- **Sistemas Expertos**
-</div>
-<div align="center">
-### Fecha:
-- **23 de Junio de 2025**
+  <h3>Materia:</h3>
+  <p><strong>Lógica y Programación</strong></p>
+  
+  <h3>Docente:</h3>
+  <p><strong>Pablo Pandolfo</strong></p>
+  
+  <h3>Tema:</h3>
+  <p><strong>Sistemas Expertos</strong></p>
+  
+  <h3>Fecha:</h3>
+  <p><strong>23 de Junio de 2025</strong></p>
 </div>
 
 # ¿Que es un Sistema Experto?
