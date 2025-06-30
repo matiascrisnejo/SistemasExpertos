@@ -17,8 +17,8 @@
   <p><strong>Robles Luciano</strong></p>
 </div>
 <div align="center">
-### Institución:
-- **Universidad Nacional de Hurlingham**
+  <h3>Institución:</h3>
+  <p><strong>Universidad Nacional de Hurlingham</strong></p>
 </div>
 <div align="center">
 ### Materia:
