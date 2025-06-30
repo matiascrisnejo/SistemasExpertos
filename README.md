@@ -1,11 +1,12 @@
-# Trabajo Práctico 2                                            
-
+<div align="center">
+# Trabajo Práctico 2
+</div>
 <p align="center">
   <img src="./assert/logo.png" alt="Descripción de la imagen">
 </p>
 
 
-
+<div align="center">
 ### Autores:
 - **Cecio Octavio**
 - **Chiappanni Valentino**
@@ -16,22 +17,27 @@
 - **Olson Miriam**
 - **Robledo Javier** 
 - **Robles Luciano** 
-
+</div>
+<div align="center">
 ### Institución:
 - **Universidad Nacional de Hurlingham**
-
+</div>
+<div align="center">
 ### Materia:
 - **Lógica y Programación**
-
+</div>
+<div align="center">
 ### Docente:
 - **Pablo Pandolfo**
-
+</div>
+<div align="center">
 ### Tema:
 - **Sistemas Expertos**
-
+</div>
+<div align="center">
 ### Fecha:
 - **23 de Junio de 2025**
-
+</div>
 
 # ¿Que es un Sistema Experto?
 - **Un sistema experto es un programa de computadora que simula el comportamiento de un experto humano en un dominio específico. Su objetivo principal es resolver problemas complejos, tomar decisiones o dar recomendaciones tal como lo haría un especialista humano en ese campo.**
